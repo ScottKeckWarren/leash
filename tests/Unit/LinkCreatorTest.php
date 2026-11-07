@@ -54,6 +54,9 @@ it('does not report or rewrite files without matches', function () {
 
     creator($this, false)->run($this->keywords, [$file]);
 
+    // PHP 8.2's touch() leaves the stat cache stale, so read the real mtime.
+    clearstatcache();
+
     expect(filemtime($file))->toBe($mtime - 100)
         ->and($this->output->fetch())->not->toContain('File:')
         ->and($this->output->fetch())->toContain("  Total replacements: 0\n  Files modified: 0\n");
