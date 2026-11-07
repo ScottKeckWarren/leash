@@ -1,0 +1,48 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # composer.lock pins packages that need PHP 8.4.1 or newer, so older
+          # versions resolve their own dependencies instead of using the lock.
+          - php: '8.2'
+            install: composer update --no-interaction --no-progress
+            test: composer test
+          - php: '8.3'
+            install: composer update --no-interaction --no-progress
+            test: composer test
+          - php: '8.4'
+            install: composer install --no-interaction --no-progress
+            test: composer test:coverage
+          - php: '8.5'
+            install: composer install --no-interaction --no-progress
+            test: composer test
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: pcov
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: ${{ matrix.install }}
+
+      - name: Run tests
+        run: ${{ matrix.test }}
