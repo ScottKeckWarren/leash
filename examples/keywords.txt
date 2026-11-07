@@ -1,0 +1,9 @@
+# Leash example keywords
+# Format: keyword: url  (split on the first colon, so URLs with colons work)
+
+PHPUnit: https://example.com/blog/tdd-with-phpunit/
+Pest: https://example.com/blog/getting-started-with-pest/
+Code Review: https://example.com/blog/code-review-habits/
+continuous integration: https://example.com/blog/ci-cd/
+Composer: https://example.com/blog/composer-basics/
+Docker: https://example.com:8443/blog/docker-for-php/

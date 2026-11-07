@@ -1,0 +1,21 @@
+# Leash parity fixture keywords
+
+PHPUnit: https://example.com/tdd-with-phpunit/
+phpunit: https://example.com/lowercase-duplicate/
+Code Review: https://example.com/blog/code-review-habits/
+continuous integration: https://example.com/ci-cd/
+  # indented comment: still a comment
+testing: https://example.com/blog/testing/
+blog: https://example.com/
+CI/CD: https://example.com/ci-cd/?ref=a:b
+node.js: https://example.com/node/
+C++: https://example.com/cpp/
+2024: https://example.com/archive/2024/
+this line has no colon
+: https://example.com/no-keyword/
+Empty URL:
+0: https://example.com/zero/
+Pest: https://example.com/old-pest/
+Docker: https://example.com/docker/
+Pest: https://example.com/pest/
+Café: https://example.com/cafe/
