@@ -22,6 +22,8 @@ composer test:coverage                          # enforces --min=90 (needs pcov 
 
 Work test-first (red, then green) with Pest. Line coverage is currently 100%.
 
+CI (`.github/workflows/tests.yml`) runs on PHP 8.2 to 8.5 and enforces coverage on 8.4. `composer.lock` pins packages that need PHP 8.4.1+, so the 8.2 and 8.3 jobs run `composer update` instead of installing from the lock.
+
 ## Architecture
 
 The flow is `bin/leash` → `Console\Application` → `LinkCreator`, which pulls files from `MarkdownFinder`, links them with `DocumentLinker`, and prints through `Reporter`.
